@@ -17,6 +17,8 @@ from vtypes import (
     MurderEvent,
     ShieldEvent,
     RoundTableEvent,
+    BreakfastEvent,
+    BreakfastOrdering,
     GameRound,
     GameEvent,
 )
@@ -61,6 +63,8 @@ def load_game_data(file_path) -> GameData:
                 events.append(ShieldEvent(**event))
             elif event['type'] == 'round table':
                 events.append(RoundTableEvent(**event))
+            elif event['type'] == 'breakfast':
+                events.append(BreakfastEvent(type=event['type'], ordering=[BreakfastOrdering(**i) for i in event['ordering']]))
         rounds.append(GameRound(events=events))
 
     return GameData(
