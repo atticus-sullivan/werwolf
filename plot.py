@@ -273,6 +273,7 @@ def draw_vote_flow_cum_rounds_weighted(game_data:GameData, G:nx.Graph, vote_coun
     plt.figure(figsize=(12, 12))
     plt.imshow(img)
     plt.axis('off')
+    plt.title("Vote Flow Diagram – All Rounds (Color & Width = Vote Frequency)", fontsize=14)
     return plt
 
 def plot_all_clusterings(game_data, G_base:nx.Graph, methods: list):
