@@ -246,9 +246,10 @@ def draw_vote_flow_cum_rounds_weighted(game_data:GameData, G:nx.Graph, vote_coun
         hex_color = '#{:02x}{:02x}{:02x}'.format(int(rgba[0]*255), int(rgba[1]*255), int(rgba[2]*255))
         edge.attr.update({
             'label': str(count),
-            'fontsize': '10',
+            'fontsize': '15',
+            'fontcolor': FLAVOR.colors.text.hex,
             'penwidth': str(1.5 + count * 1.5),
-            'color': hex_color
+            'color': hex_color,
         })
 
     A.graph_attr.update({
@@ -272,7 +273,6 @@ def draw_vote_flow_cum_rounds_weighted(game_data:GameData, G:nx.Graph, vote_coun
     plt.figure(figsize=(12, 12))
     plt.imshow(img)
     plt.axis('off')
-    plt.title("Vote Flow Diagram – All Rounds (Color & Width = Vote Frequency)", fontsize=14)
     return plt
 
 def plot_all_clusterings(game_data, G_base:nx.Graph, methods: list):
