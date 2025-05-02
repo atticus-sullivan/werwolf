@@ -1,0 +1,26 @@
+baseURL: https://atticus-sullivan.github.io/verraeter/
+languagecode: en-us
+theme: ["hugo-book"]
+
+# enableGitInfo: true
+enableEmoji: true
+
+params:
+  BookTheme: 'auto'
+  BookRepo: 'https://github.com/atticus-sullivan/sim-ayto'
+  BookSection: '*'
+  BookToC: true
+  BookDateFormat: 'Jan 2, 2006'
+  BookSearch: true
+  BookComments: false
+
+defaultContentLanguage: de
+defaultContentLanguageInSubdir: false
+languages:
+  de:
+    disabled: false
+    languageCode: de-DE
+    languageDirection: ltr
+    languageName: Deutsch
+    title: Die Verräter
+    weight: 1

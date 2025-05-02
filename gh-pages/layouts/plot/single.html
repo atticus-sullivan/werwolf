@@ -1,0 +1,59 @@
+{{ define "main" }}
+<article class="plot-page">
+	<header>
+		<h1>{{ .Title }}</h1>
+		<p><a href="/verraeter/verraeter/{{ $.Params.game }}/">← Zurück zu {{ $.Params.game }}</a></p>
+		<nav class="plot-nav">
+			<!-- Switch plot type -->
+			<div class="plot-type-nav">
+				Plot type ||
+				{{ range $t := slice "votes" "heat" "flow" "cluster" }}
+					{{ if (eq $t "heat") }}
+						<a href="/verraeter/verraeter/{{ $.Params.game }}/{{ $t }}/norm/{{ $.Params.round }}/"
+							class="{{ if eq $t $.Params.plottype }}active{{ end }}">{{ $t | title }}</a> |
+					{{ else if and (eq $t "votes") (eq $.Params.mode "cum") }}
+						<a href="/verraeter/verraeter/{{ $.Params.game }}/{{ $t }}/{{ $.Params.mode }}/0/"
+							class="{{ if eq $t $.Params.plottype }}active{{ end }}">{{ $t | title }}</a> |
+					{{ else }}
+						<a href="/verraeter/verraeter/{{ $.Params.game }}/{{ $t }}/{{ $.Params.mode }}/{{ $.Params.round }}/"
+							class="{{ if eq $t $.Params.plottype }}active{{ end }}">{{ $t | title }}</a> |
+					{{ end }}
+				{{ end }}
+			</div>
+
+			<!-- Switch mode -->
+			<div class="plot-mode-nav">
+				Mode ||
+				{{ $labels := dict
+					"norm" "Pro Runde"
+					"cum"  "Kumuliert"
+				}} {{ range $m := slice "norm" "cum" }}
+					{{ $lab := index $labels $m }}
+					{{ if and (eq $.Params.plottype "heat") (eq $m "cum") }}
+						{{ $lab }} |
+					{{ else }}
+						<a href="/verraeter/verraeter/{{ $.Params.game }}/{{ $.Params.plottype }}/{{ $m }}/{{ $.Params.round }}/"
+							class="{{ if eq $m $.Params.mode }}active{{ end }}">{{ $lab }}</a> |
+					{{ end }}
+				{{ end }}
+			</div>
+
+			<!-- Switch round -->
+			<div class="plot-round-nav">
+				Round ||
+				{{ if and (eq $.Params.plottype "votes") (eq $.Params.mode "cum") }}
+				{{ else }}
+					{{ range $i := seq 0 (math.Sub ($.Params.maxRounds | int) 1) }}
+						<a href="/verraeter/verraeter/{{ $.Params.game }}/{{ $.Params.plottype }}/{{ $.Params.mode }}/{{ printf "%d" $i }}/"
+							class="{{ if eq (printf "%d" $i) $.Params.round }}active{{ end }}">#{{$i}}</a> |
+					{{ end }}
+				{{ end }}
+			</div>
+		</nav>
+	</header>
+
+	<!-- Embed the SVG resource -->
+	{{ $filename := printf "/verraeter/s03/%s_%s_%s.svg" $.Params.plottype $.Params.mode $.Params.round }}
+	<img src="{{ $filename }}" alt="">
+</article>
+{{ end }}

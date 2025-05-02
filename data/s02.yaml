@@ -1,0 +1,142 @@
+# https://www.swp.de/unterhaltung/tv/die-verraeter-2024-teilnehmer-staffel-2-77577752.html
+participants:
+  - Gerda
+  - Bruce
+  - Oana
+  - Thomas
+  - Jan
+  - Jessica
+  - Kevin
+  - Marina
+  - Oliver
+  - Philipp
+  - Massimo
+  - Susan
+  - Jimi-Blue
+  - Dana
+  - Helge
+  - Gülcan
+
+traitors:
+  - Oana
+  - Marina
+  - Jessica
+  - Gerda
+
+rounds:
+  - events:
+    - type: murder
+      name: Olli
+    - type: breakfast
+      ordering:
+        - group:
+          - Gülcan
+          - Jessica
+          - Thomas
+          - Kevin
+        - group:
+          - Oana
+          - Massimo
+          - Dana
+        - group:
+          - Helge
+          - Marina
+          - Jimi-Blue
+          - Susan
+        - group:
+          - Philipp
+          - Jan
+          - Gerda
+        - group:
+          - Bruce
+    - type: shield
+      names:
+        - Helge # Gerda
+    - type: round table
+      votes:
+        Jimi-Blue: Helge
+        Oana: Gerda
+        Gülcan: Gerda
+        Philipp: Helge
+        Jessica: Gerda
+        Kevin: Gerda
+        Thomas: Gerda
+        Dana: Gerda
+        Massimo: Gerda
+        Marina: Gerda
+        Jan: Bruce
+        Bruce: Helge
+        Gerda: Dana
+        Helge: Kevin
+        Susan: Gerda
+
+  - events:
+    - type: murder
+      name: 
+    - type: breakfast
+      ordering:
+        - group:
+          - Susan
+          - Bruce
+        - group:
+          - Marina
+          - Gülcan
+          - Philipp
+          - Jimi-Blue
+        - group:
+          - Helge
+          - Thomas
+          - Oana
+          - Kevin
+        - group:
+          - Jan
+          - Jessica
+        - group:
+          - Dana
+    - type: shield
+      names:
+        - Jimi-Blue
+    - type: round table
+      votes:
+        Dana: Helge
+        Marina: Bruce
+        Jan: Helge
+        Bruce: Jimi-Blue
+        Helge: Jimi-Blue
+        Susan: Helge
+        Jimi-Blue: Dana
+        Oana: Helge
+        Gülcan: Helge
+        Philipp: Helge
+        Jessica: Helge
+        Kevin: Helge
+        Thomas: Philipp
+
+        # Folge 4
+
+  # - events:
+  #   - type: murder
+  #     name: 
+  #   - type: breakfast
+  #     ordering:
+  #       - group:
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #   - type: shield
+  #     names:
+  #       - 
+  #   - type: round table
+  #     votes:

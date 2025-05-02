@@ -1,0 +1,17 @@
+{{ define "main" }}
+<article class="game-overview-page">
+  <header>
+    <h1>{{ .Title }}</h1>
+    <p>{{ .Content }}</p>
+  </header>
+
+  <nav class="overview-nav">
+    <ul>
+      {{ $game := .Params.slug }}
+      {{ range $type := slice "votes" "heat" "flow" "cluster" }}
+        <li><a href="/verraeter/verraeter/{{ $game }}/{{ $type }}/norm/0/">{{ $type | title }}</a></li>
+      {{ end }}
+    </ul>
+  </nav>
+</article>
+{{ end }}

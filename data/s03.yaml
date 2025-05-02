@@ -1,0 +1,114 @@
+participants:
+  - Charlotte
+  - Janin
+  - Joe
+  - Jan
+  - Martina
+  - Younes
+  - Marie
+  - Ralf
+  - Timon
+  - Mirja
+  - Thaddäus
+  - Wayne
+  - Sandy
+  - Motsi
+  - Joachim
+  - Jorge
+
+traitors:
+  - Charlotte
+  - Wayne
+  - Motsi
+
+rounds:
+  - events:
+    - type: murder
+      name: Timon
+    - type: breakfast
+      ordering:
+        - group:
+          - Motsi
+          - Jan
+          - Sandy
+        - group:
+          - Thaddäus
+          - Marie
+          - Younes
+          - Charlotte
+        - group:
+          - Martina
+          - Wayne
+          - Mirja
+          - Joachim
+        - group:
+          - Joe
+          - Janin
+          - Ralf
+        - group:
+          - Jorge
+    - type: shield
+      names:
+        - Marie
+        - Joachim
+    - type: round table
+      votes:
+        Thaddäus: Jorge
+        Joe: Marie
+        Marie: Jorge
+        Ralf: Marie
+        Martina: Marie
+        Motsi: Jorge
+        Wayne: Jorge
+        Joachim: Janin
+        Charlotte: Marie
+        Jan: Jorge
+        Sandy: Jorge
+        Mirja: Jorge
+        Jorge: Thaddäus
+        Janin: Jorge
+        Younes: Janin
+
+  - events:
+    - type: murder
+      name: Sandy
+    - type: breakfast
+      ordering:
+        - group:
+          - Joachim
+          - Marie
+        - group:
+          - Joe
+          - Mirja
+          - Thaddäus
+          - Ralf
+        - group:
+          - Motsi
+          - Janin
+          - Charlotte
+        - group:
+          - Jan
+          - Wayne
+          - Younes
+        - group:
+          - Martina
+    - type: shield
+      names:
+        - Motsi
+    - type: round table
+      votes:
+        Martina: Wayne
+        Motsi: Jan
+        Wayne: Marie
+        Joachim: Jan
+        Jan: Joe
+        Charlotte: Jan
+        Mirja: Janin
+        Janin: Jan
+        Younes: Janin
+        Thaddäus: Janin
+        Joe: Jan
+        Marie: Janin
+        Ralf: Jan
+  # - events:
+  #   - type: murder

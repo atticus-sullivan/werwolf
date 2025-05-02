@@ -1,0 +1,4 @@
+[submodule "gh-pages/themes/hugo-book"]
+	path = gh-pages/themes/hugo-book
+	url = git@github.com:atticus-sullivan/hugo-book.git
+	branch = feat-theme
