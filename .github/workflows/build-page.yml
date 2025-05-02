@@ -77,7 +77,7 @@ jobs:
 
       - name: Build assets
         run: |
-          make -C gh-pages all
+          MPLBACKEND=Agg make -C gh-pages all
 
       - name: Build with Hugo
         env:

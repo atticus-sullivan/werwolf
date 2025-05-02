@@ -1,3 +1,4 @@
+import os
 from cycler import cycler
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -26,7 +27,8 @@ COLOR_CYCLE = [
 HATCHES = ['']*len(COLOR_CYCLE) + ['///']*len(COLOR_CYCLE)
 
 from catppuccin.extras.matplotlib import get_colormap_from_list
-mpl.use('GTK3Agg')
+backend = os.environ.get('MPLBACKEND', 'GTK3Agg')
+mpl.use(backend)
 mpl.style.use(FLAVOR.identifier)
 plt.rcParams['axes.prop_cycle'] = cycler('color', map(lambda x: x.hex, COLOR_CYCLE))
 
