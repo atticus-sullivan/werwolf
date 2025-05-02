@@ -112,31 +112,192 @@ rounds:
         Kevin: Helge
         Thomas: Philipp
 
-        # Folge 4
+  - events:
+    - type: breakfast
+      ordering: # special "Todesliste" -> Mord ist aufgeschoben
+        - group:
+          - Philipp
+          - Jimi-Blue
+        - group:
+          - Thomas
+        - group:
+          - Dana
+          - Jan
+        - group:
+          - Bruce
+          - Oana
+          - Jessica
+        - group:
+          - Gülcan
+          - Kevin
+        - group:
+          - Marina
+        - group:
+          - Susan
+    - type: murder
+    # Todesliste: Susan Thomas Gülcan Philipp
+    # Philipp hat sich gerettet + Thomas ist verbannt worden
+    # => nächte Nacht entweder Susan oder Gülcan
+    - type: dagger
+      names:
+        - Thomas
+    - type: round table
+      votes:
+        Philipp: Thomas
+        Jessica: Jan
+        Kevin: Dana
+        Thomas: Philipp # x2
+        Dana: Jessica
+        Marina: Thomas
+        Jan: Jessica
+        Bruce: Susan
+        Susan: Dana
+        Jimi-Blue: Thomas
+        Oana: Thomas
+        Gülcan: Philipp
 
-  # - events:
-  #   - type: murder
-  #     name: 
-  #   - type: breakfast
-  #     ordering:
-  #       - group:
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #   - type: shield
-  #     names:
-  #       - 
-  #   - type: round table
-  #     votes:
+  - events:
+    - type: murder
+      name: Gülcan
+    - type: breakfast
+      ordering:
+        - group:
+          - Dana
+          - Oana
+        - group:
+          - Jan
+          - Philipp
+        - group:
+          - Bruce
+          - Marina
+          - Jimi-Blue
+        - group:
+          - Jessica
+          - Kevin
+        - group:
+          - Susan
+    - type: shield
+      names:
+        - Jimi-Blue
+    - type: round table
+      votes:
+        Bruce: Philipp
+        Susan: Philipp
+        Jimi-Blue: Jan
+        Oana: Susan
+        Philipp: Jessica
+        Jessica: Dana
+        Kevin: Marina
+        Dana: Jessica
+        Marina: Philipp
+        Jan: Oana
+
+  - events:
+    - type: murder
+      name: Kevin
+    - type: breakfast
+      ordering:
+        - group:
+          - Jimi-Blue
+          - Bruce
+        - group:
+          - Oana
+        - group:
+          - Susan
+        - group:
+          - Jessica
+          - Dana
+        - group: # wurden entführt
+          - Marina
+          - Jan
+    - type: shield
+      names:
+        - Jimi-Blue
+    - type: round table
+      votes: # Tie
+        Jessica: Jan
+        Dana: Jessica
+        Marina: Jessica
+        Jan: Oana
+        Bruce: Oana
+        Susan: Jessica
+        Jimi-Blue: Oana
+        Oana: Jan
+    # Stichwahl
+    # - type: round table
+    #   votes:
+    #     Marina: Jessica
+    #     Jan: Oana
+    #     Bruce: Oana
+    #     Susan: Jessica
+    #     Jimi-Blue: Oana
+    #     Dana: Jessica
+    # Neue Wahl ohne Jessica und ohne Oana
+    # - type: round table
+    #   votes:
+    #     Dana: Susan
+    #     Marina: Susan
+    #     Jan: Susan
+    #     Bruce: Marina
+    #     Susan: Jan
+    #     Jimi-Blue: Dana
+    #     Oana: Jan
+    #     Jessica: Marina
+
+  - events:
+    # no murder 
+    # - type: murder
+    #   name: 
+    - type: breakfast
+      ordering:
+        - group:
+          - Marina
+        - group:
+          - Oana
+        - group:
+          - Jessica
+        - group:
+          - Bruce
+        - group:
+          - Jan
+        - group:
+          - Jimi-Blue
+          - Dana
+    - type: dagger
+      names:
+        - Jimi-Blue
+    - type: round table
+      votes:
+        Marina: Jan
+        Jan: Bruce
+        Bruce: Marina
+        Jimi-Blue: Jessica # x2
+        Oana: Jan
+        Jessica: Jan
+        Dana: Bruce
+
+  - events:
+    - type: murder
+      name: Jimi-Blue
+    - type: breakfast
+      ordering:
+        - group:
+          - Jessica
+        - group:
+          - Jimi-Blue
+        - group:
+          - Marina
+        - group:
+          - Oana
+        - group:
+          - Bruce
+    - type: dagger
+      names:
+        - Jimi-Blue
+    - type: round table
+      votes:
+        Oana: Bruce
+        Jessica: Bruce
+        Marina: Bruce
+        Bruce: Oana
+        Jimi-Blue: Jessica # x2
