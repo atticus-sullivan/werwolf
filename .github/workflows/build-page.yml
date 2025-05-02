@@ -1,5 +1,8 @@
 name: Generate github pages
 
+env:
+  MPLBACKEND: Agg
+
 on:
   push:
     branches:

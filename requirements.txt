@@ -16,8 +16,6 @@ numpy==2.2.5
 packaging==25.0
 pandas==2.2.3
 pillow==11.2.1
-pycairo==1.28.0
-PyGObject==3.52.3
 pygraphviz==1.14
 pyparsing==3.2.3
 python-dateutil==2.9.0.post0
