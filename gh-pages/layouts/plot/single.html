@@ -53,7 +53,7 @@
 	</header>
 
 	<!-- Embed the SVG resource -->
-	{{ $filename := printf "/werwolf/s03/%s_%s_%s.svg" $.Params.plottype $.Params.mode $.Params.round }}
+	{{ $filename := printf "/werwolf/%s/%s_%s_%s.svg" $.Params.game $.Params.plottype $.Params.mode $.Params.round }}
 	<img src="{{ $filename }}" alt="">
 </article>
 {{ end }}

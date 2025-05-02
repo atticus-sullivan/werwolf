@@ -41,7 +41,7 @@ def check(game_data: GameData):
                 assert len(event.votes) == part_left
                 part_left -= 1
             elif event.type == 'breakfast':
-                assert sum(map(lambda x: len(x['group']), event.ordering)) == part_left
+                assert sum(map(lambda x: len(x.group), event.ordering)) == part_left
             elif event.type == 'shield':
                 pass
             else:
@@ -58,7 +58,8 @@ def load_game_data(file_path) -> GameData:
         events = []
         for event in round_raw['events']:
             if event['type'] == 'murder':
-                events.append(MurderEvent(**event))
+                if 'name' in event:
+                    events.append(MurderEvent(**event))
             elif event['type'] == 'shield':
                 events.append(ShieldEvent(**event))
             elif event['type'] == 'round table':
