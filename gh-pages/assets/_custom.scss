@@ -1,0 +1,7 @@
+// assets/_custom.scss
+a.active {
+  color: var(--color-visited-link); /* gray‑out the current link */
+  pointer-events: none;             /* disable further clicks */
+  cursor: default;                  /* normal arrow cursor */
+  text-decoration: none;            /* remove underline */
+}
