@@ -121,6 +121,7 @@ def build_vote_matrix(game_data: GameData, until_round: int|None):
                     i = name_to_index[voter]
                     j = name_to_index[target]
                     vote_matrix[i][j] += 1
+                break # only consider the first round table vote here
 
     return vote_matrix, participants
 
@@ -131,6 +132,7 @@ def vote_flow_graph(game_data: GameData, round_index:int):
     for event in round_data:
         if event.type == 'round table':
             participants.union(event.votes.keys())
+            break # only consider the first round table vote here
 
     G = nx.DiGraph()
     G.add_nodes_from(participants)
@@ -144,6 +146,7 @@ def vote_flow_graph(game_data: GameData, round_index:int):
         elif event.type == 'round table':
             for voter, target in event.votes.items():
                 G.add_edge(voter, target)
+            break # only consider the first round table vote here
     return G, immune
 
 
@@ -154,6 +157,7 @@ def vote_flow_cum_rounds_weighted(game_data:GameData, until_round:int|None):
         for event in rnd.events:
             if event.type == 'round table':
                 participants.union(event.votes.keys())
+            break # only consider the first round table vote here
 
     G = nx.DiGraph()
     G.add_nodes_from(participants)
@@ -167,6 +171,7 @@ def vote_flow_cum_rounds_weighted(game_data:GameData, until_round:int|None):
                 for voter, target in event.votes.items():
                     vote_counts[(voter, target)] += 1
                     G.add_edge(voter, target)
+                break # only consider the first round table vote in each round
     return G, vote_counts
 
 
@@ -183,6 +188,7 @@ def build_cum_vote_share_data(game_data, until_round:int|None):
             if event.type == 'round table':
                 for target in event.votes.values():
                     vote_share.loc[round_idx, target] += 1
+                break # only consider the first round table vote in each round
 
     return vote_share
 
