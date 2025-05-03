@@ -13,6 +13,11 @@ class ShieldEvent:
     names: List[str]
 
 @dataclass
+class DaggerEvent:
+    type: Literal['dagger']
+    names: List[str]
+
+@dataclass
 class RoundTableEvent:
     type: Literal['round table']
     votes: Dict[str, str]
@@ -26,7 +31,7 @@ class BreakfastEvent:
     type: Literal['breakfast']
     ordering: List[BreakfastOrdering]
 
-GameEvent = Union[MurderEvent, ShieldEvent, RoundTableEvent, BreakfastEvent]
+GameEvent = Union[MurderEvent, ShieldEvent, RoundTableEvent, BreakfastEvent, DaggerEvent]
 
 # --- Round ---
 @dataclass

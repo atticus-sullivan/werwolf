@@ -17,6 +17,7 @@ from vtypes import (
     GameData,
     MurderEvent,
     ShieldEvent,
+    DaggerEvent,
     RoundTableEvent,
     BreakfastEvent,
     BreakfastOrdering,
@@ -78,6 +79,10 @@ def check(game_data: GameData):
             elif event.type == 'shield':
                 for n in event.names:
                     assert n in part_left
+            elif event.type == 'dagger':
+                for n in event.names:
+                    assert n in part_left
+                    voting_power[n] = 2
             else:
                 assert False, f'Invalid type ({event['type']}) in round found'
 
@@ -96,6 +101,8 @@ def load_game_data(file_path) -> GameData:
                     events.append(MurderEvent(**event))
             elif event['type'] == 'shield':
                 events.append(ShieldEvent(**event))
+            elif event['type'] == 'dagger':
+                events.append(DaggerEvent(**event))
             elif event['type'] == 'round table':
                 events.append(RoundTableEvent(**event))
             elif event['type'] == 'breakfast':
