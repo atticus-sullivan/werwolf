@@ -427,7 +427,7 @@ if __name__ == '__main__':
             elif args.final:
                 ds = (build_vote_share_data(game_data, round_index=len(game_data.rounds)),)
             else:
-                ds = map(lambda i: build_vote_share_data(game_data, round_index=i), range(len(game_data.rounds)))
+                ds = map(lambda i: build_vote_share_data(game_data, round_index=i+1), range(len(game_data.rounds)))
         for i, d in enumerate(ds):
             plt = plot_vote_share(d)
             if not args.output:
