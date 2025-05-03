@@ -215,7 +215,7 @@ def build_vote_share_data(game_data, round_index: int):
         if event.type == 'round table':
             for target in event.votes.values():
                 vote_share.loc[round_index, target] += 1
-                break # only consider the first round table vote in each round
+            break # only consider the first round table vote in each round
 
     return vote_share
 
