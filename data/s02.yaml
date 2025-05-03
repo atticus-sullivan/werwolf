@@ -26,7 +26,7 @@ traitors:
 rounds:
   - events:
     - type: murder
-      name: Olli
+      name: Oliver
     - type: breakfast
       ordering:
         - group:
@@ -72,7 +72,7 @@ rounds:
 
   - events:
     - type: murder
-      name: 
+      name: Massimo
     - type: breakfast
       ordering:
         - group:
@@ -223,26 +223,24 @@ rounds:
         Susan: Jessica
         Jimi-Blue: Oana
         Oana: Jan
-    # Stichwahl
-    # - type: round table
-    #   votes:
-    #     Marina: Jessica
-    #     Jan: Oana
-    #     Bruce: Oana
-    #     Susan: Jessica
-    #     Jimi-Blue: Oana
-    #     Dana: Jessica
-    # Neue Wahl ohne Jessica und ohne Oana
-    # - type: round table
-    #   votes:
-    #     Dana: Susan
-    #     Marina: Susan
-    #     Jan: Susan
-    #     Bruce: Marina
-    #     Susan: Jan
-    #     Jimi-Blue: Dana
-    #     Oana: Jan
-    #     Jessica: Marina
+    - type: round table
+      votes: # Stichwahl
+        Marina: Jessica
+        Jan: Oana
+        Bruce: Oana
+        Susan: Jessica
+        Jimi-Blue: Oana
+        Dana: Jessica
+    - type: round table
+      votes: # Neue Wahl ohne Jessica und ohne Oana
+        Dana: Susan
+        Marina: Susan
+        Jan: Susan
+        Bruce: Marina
+        Susan: Jan
+        Jimi-Blue: Dana
+        Oana: Jan
+        Jessica: Marina
 
   - events:
     # no murder 
@@ -278,7 +276,7 @@ rounds:
 
   - events:
     - type: murder
-      name: Jimi-Blue
+      name: Dana
     - type: breakfast
       ordering:
         - group:
