@@ -31,19 +31,52 @@ from cluster import (
     spectral,
 )
 
+def check_who_was_banned(votes: dict[str,str], weights: dict[str, float], default_weight: float = 1.0):
+    totals = defaultdict(float)
+    for voter, target in votes.items():
+        w = weights.get(voter, default_weight)
+        totals[target] += w
+
+    if not totals:
+        raise ValueError("No votes to tally")
+
+    # 2) Find the maximum total
+    max_votes = max(totals.values())
+
+    # 3) Collect all candidates with that max
+    winners = [cand for cand, score in totals.items() if score == max_votes]
+
+    # Return single name or tie list
+    return [winners[0]] if len(winners) == 1 else winners
+
 def check(game_data: GameData):
-    part_left = len(game_data.participants)
+    part_left = set(game_data.participants)
     for r in game_data.rounds:
+        voting_power = {}
+        next_voters,voters = None,None
         for event in r.events:
             if event.type == 'murder':
-                part_left -= 1
+                part_left.remove(event.name)
             elif event.type == 'round table':
-                assert len(event.votes) == part_left
-                part_left -= 1
+                if not voters: voters = set(part_left)
+                else: next_voters = set(part_left)
+                assert event.votes.keys() == voters
+                banned = check_who_was_banned(event.votes, {})
+                if len(banned) == 1:
+                    # voting worked out
+                    part_left.remove(banned[0])
+                elif not next_voters:
+                    # first tie -> tied people are not allowed to vote
+                    for b in banned: voters.remove(b)
+                else:
+                    # second tie -> all are allowed to vote again
+                    voters = next_voters
             elif event.type == 'breakfast':
-                assert sum(map(lambda x: len(x.group), event.ordering)) == part_left
+                assert sum(map(lambda x: len(x.group), event.ordering)) == len(part_left)
+                assert set().union(*map(lambda x: set(x.group), event.ordering)) == part_left
             elif event.type == 'shield':
-                pass
+                for n in event.names:
+                    assert n in part_left
             else:
                 assert False, f'Invalid type ({event['type']}) in round found'
 
