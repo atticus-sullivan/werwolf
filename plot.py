@@ -110,7 +110,7 @@ def plot_vote_heatmap(matrix, names):
     # Create the heatmap without the totals, using a custom color scale
     plt.figure(figsize=(10, 8))
     cmap = get_colormap_from_list(
-        catppuccin.PALETTE.frappe.identifier,
+        FLAVOR.identifier,
         ["yellow", "peach", "red"],
     )
     ax = sns.heatmap(matrix_without_totals, annot=True, fmt='d', cmap=cmap,
@@ -236,7 +236,7 @@ def draw_vote_flow_cum_rounds_weighted(game_data:GameData, G:nx.Graph, vote_coun
     max_votes = max(vote_counts.values())
     norm = Normalize(vmin=1, vmax=max_votes)
     cmap = get_colormap_from_list(
-        catppuccin.PALETTE.frappe.identifier,
+        FLAVOR.identifier,
         ["yellow", "peach", "red"],
     )
     for (voter, target), count in vote_counts.items():
@@ -381,4 +381,37 @@ def plot_vote_share(vote_share_df):
     plt.legend(loc='upper left', bbox_to_anchor=(1.0, 1.0))
     plt.tight_layout()
 
+    return plt
+
+def plot_breakfast_groups(grouping_table):
+    fig, (ax0, ax1) = plt.subplots(1, 2, figsize=(14, 6))
+
+    # ---- Left: Heatmap ----
+    cmap = get_colormap_from_list(
+        catppuccin.PALETTE.frappe.identifier,
+        ["green", "peach", "red"],
+    )
+    cmap.set_bad(color=FLAVOR.colors.surface0.hex)
+    im = ax0.imshow(grouping_table, aspect='auto', cmap=cmap)
+    ax0.set_xticks(np.arange(grouping_table.shape[1]))
+    ax0.set_xticklabels(grouping_table.columns)
+    ax0.set_yticks(np.arange(grouping_table.shape[0]))
+    ax0.set_yticklabels(grouping_table.index)
+    ax0.set_xlabel("Round")
+    ax0.set_ylabel("Group")
+    ax0.set_title("Heatmap of Traitor Counts")
+    fig.colorbar(im, ax=ax0, label="Traitor Count", fraction=0.046, pad=0.04)
+
+    # ---- Right: Bar chart ----
+    total_traitors = np.nansum(grouping_table.values, axis=1)
+    ax1.bar(
+        grouping_table.index.astype(str),
+        total_traitors,
+        hatch=HATCHES[:len(total_traitors)]
+    )
+    ax1.set_xlabel("Group")
+    ax1.set_ylabel("Total Traitor Count")
+    ax1.set_title("Total Traitors per Group Across All Rounds")
+
+    plt.tight_layout()
     return plt

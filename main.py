@@ -10,6 +10,7 @@ from plot import (
     draw_vote_flow_graph,
     plot_all_clusterings,
     plot_vote_share,
+    plot_breakfast_groups,
 )
 
 from vtypes import (
@@ -207,8 +208,72 @@ def build_vote_share_data(game_data, round_index: int):
         if event.type == 'round table':
             for target in event.votes.values():
                 vote_share.loc[round_index, target] += 1
+                break # only consider the first round table vote in each round
 
     return vote_share
+
+def build_breakfast_grouping_table(
+    game_data: GameData,
+    until_round: int|None = None
+) -> pd.DataFrame:
+    """
+    Scans each round's BreakfastEvent up to `until_round`, counts how many traitors
+    are in each breakfast group, and returns a DataFrame indexed by group (1, 2, ...)
+    with columns for each round.
+
+    Parameters
+    ----------
+    game_data : GameData
+        Your full game data.
+    until_round : int or None, default None
+        If int, only include rounds with index <= until_round.
+        If None, include all rounds.
+
+    Returns
+    -------
+    pd.DataFrame
+        Pivot table where rows are group indices, columns are round numbers,
+        and values are traitor counts (NaN if that group didn't exist).
+    """
+    records = []
+    for rnd_idx, game_round in enumerate(game_data.rounds):
+        # stop if we've passed the cutoff
+        if until_round is not None and rnd_idx > until_round:
+            break
+
+        # find the breakfast event
+        breakfast = next(
+            (e for e in game_round.events if isinstance(e, BreakfastEvent)),
+            None
+        )
+        if breakfast is None:
+            # no breakfast this round; skip
+            continue
+
+        # for each group in the breakfast ordering
+        for grp_idx, grp_dict in enumerate(breakfast.ordering):
+            member_names = grp_dict.group
+            # count traitors in this group
+            traitor_count = sum(name in game_data.traitors for name in member_names)
+            records.append({
+                'round': rnd_idx,
+                'group': grp_idx + 1,           # 1-based group index
+                'traitor_count': traitor_count
+            })
+
+    # build DataFrame and pivot, using NaN for missing
+    df = pd.DataFrame.from_records(records)
+    table = df.pivot_table(
+        index='group',
+        columns='round',
+        values='traitor_count',
+        aggfunc='sum',
+        fill_value=np.nan
+    )
+
+    # sort rows by group index
+    table = table.sort_index(axis=0)
+    return table
 
 def parse_args():
     from argparse import ArgumentParser
@@ -233,6 +298,10 @@ def parse_args():
 
     votes = subparsers.add_parser('votes')
     votes.add_argument('-c', '--cumulated', action='store_true')
+    votes.add_argument('-f', '--final', action='store_true')
+    votes.add_argument('-r', '--round', type=int)
+
+    votes = subparsers.add_parser('breakfast')
     votes.add_argument('-f', '--final', action='store_true')
     votes.add_argument('-r', '--round', type=int)
 
@@ -354,6 +423,25 @@ if __name__ == '__main__':
                 ds = map(lambda i: build_vote_share_data(game_data, round_index=i), range(len(game_data.rounds)))
         for i, d in enumerate(ds):
             plt = plot_vote_share(d)
+            if not args.output:
+                plt.show()
+            else:
+                plt.savefig(
+                    args.output.format(i),
+                    dpi=300,
+                    bbox_inches='tight',
+                )
+
+    elif args.command == 'breakfast':
+        if args.round is not None:
+            ds = (build_breakfast_grouping_table(game_data, until_round=args.round),)
+        elif args.final:
+            ds = (build_breakfast_grouping_table(game_data, until_round=len(game_data.rounds)),)
+        else:
+            ds = map(lambda i: build_breakfast_grouping_table(game_data, until_round=i), range(len(game_data.rounds)))
+
+        for i, d in enumerate(ds):
+            plt = plot_breakfast_groups(d)
             if not args.output:
                 plt.show()
             else:
