@@ -32,8 +32,10 @@
 					{{ if and (eq $.Params.plottype "heat") (eq $m "cum") }}
 						{{ $lab }} |
 					{{ else if and (eq $.Params.plottype "votes") (eq $m "cum") }}
-					{{ else }}
 						<a href="/werwolf/verraeter/{{ $.Params.game }}/{{ $.Params.plottype }}/{{ $m }}/0/"
+							class="{{ if eq $m $.Params.mode }}active{{ end }}">{{ $lab }}</a> |
+					{{ else }}
+						<a href="/werwolf/verraeter/{{ $.Params.game }}/{{ $.Params.plottype }}/{{ $m }}/{{ $.Params.round }}/"
 							class="{{ if eq $m $.Params.mode }}active{{ end }}">{{ $lab }}</a> |
 					{{ end }}
 				{{ end }}
