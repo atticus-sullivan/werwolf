@@ -1,0 +1,177 @@
+participants:
+  - Pascal
+  - Vincent
+  - Friedrich
+  - Anna-Carina
+  - Timothy
+  - Mariella
+  - Sabrina
+  - Florian
+  - Shermine
+  - Sebastian
+  - Ulrike
+  - Jalil
+  - Christine
+  - Irina
+  - Claude-Oliver
+  - Susan
+
+traitors:
+- Anna-Carina
+- Jalil
+- Florian
+
+rounds:
+  - events:
+    - type: murder
+      name: Susan
+    - type: breakfast
+      ordering:
+        - group:
+          - Pascal
+          - Timothy
+        - group:
+          - Mariella
+          - Florian
+          - Sabrina
+        - group:
+          - Claude-Oliver
+          - Shermine
+        - group:
+          - Sebastian
+          - Jalil
+          - Friedrich
+          - Christine
+        - group:
+          - Irina
+          - Anna-Carina
+          - Vincent
+        - group:
+          - Ulrike
+    - type: round table
+      votes:
+        Pascal: Florian
+        Friedrich: Sebastian
+        Vincent: Timothy
+        Christine: Sebastian
+        Mariella: Sebastian
+        Florian: Sebastian
+        Ulrike: Timothy
+        Claude-Oliver: Sebastian
+        Anna-Carina: Sebastian
+        Irina: Sebastian
+        Jalil: Claude-Oliver
+        Timothy: Sebastian
+        Sabrina: Sebastian
+        Sebastian: Timothy
+        Shermine: Sebastian
+
+  - events:
+    - type: murder
+      name: Timothy
+    - type: breakfast
+      ordering:
+        - group:
+          - Claude-Oliver
+        - group:
+          - Irina
+          - Mariella
+        - group:
+          - Jalil
+          - Anna-Carina
+        - group:
+          - Vincent
+        - group:
+          - Pascal
+        - group:
+          - Ulrike
+          - Florian
+        - group:
+          - Friedrich
+        - group:
+          - Christine
+          - Shermine
+        - group:
+          - Sabrina
+    - type: shield
+      names:
+        - Irina
+    - type: round table
+      votes:
+        Sabrina: Florian
+        Shermine: Florian
+        Pascal: Florian
+        Friedrich: Florian
+        Vincent: Florian
+        Christine: Irina
+        Mariella: Florian
+        Florian: Irina
+        Ulrike: Florian
+        Claude-Oliver: Irina
+        Anna-Carina: Florian
+        Irina: Florian
+        Jalil: Florian
+
+  # - events:
+  #   - type: murder
+  #     name: 
+  #   - type: breakfast
+  #     ordering:
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #   - type: shield
+  #     names:
+  #       - 
+  #       - 
+  #   - type: round table
+  #     votes:
+
+  # - events:
+  #   - type: murder
+  #     name: 
+  #   - type: breakfast
+  #     ordering:
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #   - type: shield
+  #     names:
+  #       - 
+  #       - 
+  #   - type: round table
+  #     votes:
