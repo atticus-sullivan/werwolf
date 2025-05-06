@@ -138,7 +138,7 @@ def plot_vote_heatmap(matrix, names):
 
     return plt
 
-def draw_vote_flow_graph(game_data: GameData, G:nx.Graph, immune):
+def draw_vote_flow_graph(game_data: GameData, G:nx.Graph, immune: set[str], winners: set[str]):
     A = to_agraph(G)
 
     traitors = set(game_data.traitors)
@@ -173,6 +173,10 @@ def draw_vote_flow_graph(game_data: GameData, G:nx.Graph, immune):
         node.attr['fixedsize'] = 'true'
         node.attr['fontname'] = 'Helvetica'
         node.attr['fontsize'] = '26'
+
+        if name in winners:
+            node.attr['color']    = FLAVOR.colors.yellow.hex
+            node.attr['penwidth'] = '8'
 
     A.graph_attr.update({
         'nodesep': '+1',   # horizontal space between nodes

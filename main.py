@@ -138,7 +138,7 @@ def build_vote_matrix(game_data: GameData, until_round: int|None):
     return vote_matrix, participants
 
 
-def vote_flow_graph(game_data: GameData, round_index:int):
+def vote_flow_graph(game_data: GameData, round_index:int) -> tuple[nx.Graph, set[str], set[str]]:
     round_data:List[GameEvent] = game_data.rounds[round_index].events
     participants = set()
     for event in round_data:
@@ -150,6 +150,7 @@ def vote_flow_graph(game_data: GameData, round_index:int):
     G.add_nodes_from(participants)
 
     immune = set()
+    votes = {}
 
     # Extract events
     for event in round_data:
@@ -158,8 +159,9 @@ def vote_flow_graph(game_data: GameData, round_index:int):
         elif event.type == 'round table':
             for voter, target in event.votes.items():
                 G.add_edge(voter, target)
+                votes[target] = votes.get(target, 0) + 1
             break # only consider the first round table vote here
-    return G, immune
+    return G, immune, {k for k,v in votes.items() if v == max(votes.values())}
 
 
 def vote_flow_cum_rounds_weighted(game_data:GameData, until_round:int|None):
@@ -376,7 +378,7 @@ if __name__ == '__main__':
             else:
                 ds = map(lambda i: vote_flow_graph(game_data, round_index=i), range(len(game_data.rounds)))
             for i, d in enumerate(ds):
-                plt = draw_vote_flow_graph(game_data, d[0], d[1])
+                plt = draw_vote_flow_graph(game_data, d[0], d[1], d[2])
                 if not args.output:
                     plt.show()
                 else:
