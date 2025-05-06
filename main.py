@@ -58,7 +58,11 @@ def check(game_data: GameData):
         next_voters,voters = None,None
         for event in r.events:
             if event.type == 'murder':
-                part_left.remove(event.name)
+                try:
+                    part_left.remove(event.name)
+                except Exception as e:
+                    print(f"trying to remove {event.name} from {part_left}")
+                    raise e
             elif event.type == 'round table':
                 if not voters: voters = set(part_left)
                 else: next_voters = set(part_left)
