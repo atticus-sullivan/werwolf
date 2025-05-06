@@ -168,7 +168,7 @@ def draw_vote_flow_graph(game_data: GameData, G:nx.Graph, immune: set[str], winn
             node.attr['fontcolor'] = color_text
 
         node.attr['shape'] = 'ellipse'
-        node.attr['width'] = '1.75'
+        node.attr['width'] = '2.1'
         node.attr['height'] = '1'
         node.attr['fixedsize'] = 'true'
         node.attr['fontname'] = 'Helvetica'
@@ -230,7 +230,7 @@ def draw_vote_flow_cum_rounds_weighted(game_data:GameData, G:nx.Graph, vote_coun
             node.attr['fontcolor'] = color_text
 
         node.attr['shape'] = 'ellipse'
-        node.attr['width'] = '1.75'
+        node.attr['width'] = '2.1'
         node.attr['height'] = '1'
         node.attr['fixedsize'] = 'true'
         node.attr['fontname'] = 'Helvetica'
