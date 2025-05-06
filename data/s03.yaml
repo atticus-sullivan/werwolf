@@ -17,9 +17,10 @@ participants:
   - Jorge
 
 traitors:
-  - Charlotte
+  - Mirja
   - Wayne
   - Motsi
+  - Charlotte
 
 rounds:
   - events:
@@ -110,5 +111,104 @@ rounds:
         Joe: Jan
         Marie: Janin
         Ralf: Jan
+
+  - events:
+    - type: breakfast
+      ordering:
+        - group:
+          - Wayne
+          - Mirja
+          - Ralf
+        - group:
+          - Martina
+        - group:
+          - Motsi
+          - Janin
+          - Joachim
+        - group:
+          - Marie
+          - Charlotte
+        - group:
+          - Joe
+    - type: murder
+      name: Martina
+    - type: shield
+      names:
+        - Charlotte
+    - type: round table
+      votes:
+        Joachim: Janin
+        Charlotte: Janin
+        Mirja: Janin
+        Janin: Wayne
+        Younes: Janin
+        Thaddäus: Wayne
+        Joe: Janin
+        Marie: Janin
+        Ralf: Janin
+        Motsi: Janin
+        Wayne: Joachim
+
   # - events:
   #   - type: murder
+  #     name: 
+  #   - type: breakfast
+  #     ordering:
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #   - type: shield
+  #     names:
+  #       - 
+  #       - 
+  #   - type: round table
+  #     votes:
+
+  # - events:
+  #   - type: murder
+  #     name: 
+  #   - type: breakfast
+  #     ordering:
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #         - 
+  #         - 
+  #       - group:
+  #         - 
+  #   - type: shield
+  #     names:
+  #       - 
+  #       - 
+  #   - type: round table
+  #     votes:
