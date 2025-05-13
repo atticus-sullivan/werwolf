@@ -124,10 +124,12 @@ rounds:
         - group:
           - Motsi
           - Janin
+          - Younes
           - Joachim
         - group:
           - Marie
           - Charlotte
+          - Thaddäus
         - group:
           - Joe
     - type: murder
@@ -149,37 +151,42 @@ rounds:
         Motsi: Janin
         Wayne: Joachim
 
-  # - events:
-  #   - type: murder
-  #     name: 
-  #   - type: breakfast
-  #     ordering:
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #   - type: shield
-  #     names:
-  #       - 
-  #       - 
-  #   - type: round table
-  #     votes:
+  - events:
+    - type: murder
+      name: Joachim
+    - type: breakfast
+      ordering:
+        - group:
+          - Charlotte
+          - Thaddäus
+        - group:
+          - Motsi
+          - Mirja
+          - Ralf
+        - group:
+          - Marie
+          - Wayne
+        - group:
+          - Younes
+        - group:
+          - Joe
+    - type: dagger
+      names:
+        - Mirja
+    - type: shield
+      names:
+        - Younes
+    - type: round table
+      votes:
+        Younes: Wayne
+        Thaddäus: Joe
+        Joe: Thaddäus
+        Marie: Wayne
+        Ralf: Wayne
+        Motsi: Wayne
+        Wayne: Motsi
+        Charlotte: Wayne
+        Mirja: Wayne # 2x
 
   # - events:
   #   - type: murder
