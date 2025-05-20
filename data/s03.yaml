@@ -188,6 +188,43 @@ rounds:
         Charlotte: Wayne
         Mirja: Wayne # 2x
 
+  - events:
+    - type: deathList
+      names:
+        - Thaddäus
+        - Ralf
+        - Marie
+    - type: breakfast
+      ordering:
+        - group:
+          - Younes
+        - group:
+          - Mirja
+        - group:
+          - Charlotte
+        - group:
+          - Joe
+        - group:
+          - Motsi
+        - group:
+          - Thaddäus
+          - Ralf
+          - Marie
+    - type: dagger
+      names:
+        - Charlotte
+        - Joe
+    - type: round table
+      votes:
+        Thaddäus: Joe
+        Joe: Thaddäus # 2x
+        Marie: Thaddäus
+        Ralf: Thaddäus
+        Motsi: Thaddäus
+        Charlotte: Thaddäus
+        Mirja: Thaddäus # 2x
+        Younes: Thaddäus
+
   # - events:
   #   - type: murder
   #     name: 
