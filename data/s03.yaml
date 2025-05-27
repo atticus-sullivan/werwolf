@@ -225,34 +225,34 @@ rounds:
         Mirja: Thaddäus # 2x
         Younes: Thaddäus
 
-  # - events:
-  #   - type: murder
-  #     name: 
-  #   - type: breakfast
-  #     ordering:
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #         - 
-  #         - 
-  #       - group:
-  #         - 
-  #   - type: shield
-  #     names:
-  #       - 
-  #       - 
-  #   - type: round table
-  #     votes:
+  - events:
+    - type: murder
+      name: Ralf
+    - type: breakfast
+      ordering:
+        - group:
+          - Motsi
+        - group:
+          - Charlotte
+        - group:
+          - Joe
+        - group:
+          - Younes
+        - group:
+          - Marie
+    - type: round table
+      votes:
+        Charlotte: Joe
+        Mirja: Joe
+        Younes: Joe
+        Joe: Marie
+        Marie: Joe
+        Motsi: Joe
+
+    - type: round table (2)
+      votes:
+        Marie: Charlotte
+        Motsi: Marie
+        Charlotte: Marie
+        Mirja: Marie
+        Younes: Charlotte
